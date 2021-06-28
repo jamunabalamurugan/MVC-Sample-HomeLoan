@@ -1,0 +1,100 @@
+﻿@model IEnumerable<HomeLoan1.Models.AllUsers>
+
+@{
+    ViewBag.Title = "ViewDetails";
+    Layout = "~/Views/Shared/_Layout-Admin.cshtml";
+    WebGrid webGrid = new WebGrid(source: Model, rowsPerPage: 10);
+}
+
+<center><h2>View Details</h2></center>
+@webGrid.GetHtml(
+       htmlAttributes: new { @id = "WebGrid", @class = "Grid webgrid-table" },
+
+       columns: webGrid.Columns(
+                webGrid.Column("First_Name", "First Name"),
+               webGrid.Column("Middle_Name", "Middle Name"),
+               webGrid.Column("Last_Name", "Last Name"),
+             webGrid.Column("Phone_Number", "Phone Number"),
+              webGrid.Column("Date_Of_Birth", "Date Of Birth", format: (item) => string.Format("{0:dd-MMM-yyyy}", item.Date_Of_Birth)),
+              webGrid.Column("Gender", "Gender"),
+             webGrid.Column("Aadhar_Number", "Aadhar Number"),
+              webGrid.Column("Pan_Number", "PAN Number"),
+              webGrid.Column("Type_Of_Employment", "Type of Employment"),
+               webGrid.Column("Organization_Type", "Organization Type"),
+               webGrid.Column("Organization_Name", "Organization Name"),
+             webGrid.Column("Salary", "Salary"),
+            webGrid.Column("Retirement_Age", "Retirement Age"),
+          webGrid.Column("Plot_Number", "Plot Number"),
+              webGrid.Column("Property_Area", "Plot Area"),
+              webGrid.Column("Pincode", "ZIP Code"),
+               webGrid.Column("Type_Of_Property", "Type of Property"),
+            webGrid.Column("Estimated_Cost", "Estimated Cost"),
+                 webGrid.Column(format: (item) => Html.ActionLink("View Uploaded Documents", "ViewVDocuments", new { id = item.Application_ID }), style: "column-action")))
+
+@Html.ActionLink("Go to Previous Page", "Verified")
+
+
+@*<table border="1">
+        <tr>
+
+            <td>
+                @Html.DisplayNameFor(model => model.First_Name)
+            </td>
+
+            <td></td>
+
+            <td>
+                @Html.DisplayNameFor(model => model.Last_Name)
+            </td>
+            <td>
+                @Html.DisplayNameFor(model => model.Email)
+            </td>
+            <td>
+                @Html.DisplayNameFor(model => model.Phone_Number)
+            </td>
+            <td>
+                @Html.DisplayNameFor(model => model.Date_Of_Birth)
+            </td>
+            <td>
+                @Html.DisplayNameFor(model => model.Gender)
+            </td>
+            <td>
+                @Html.DisplayNameFor(model => model.Amount)
+            </td>
+
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.First_Name)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Last_Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Phone_Number)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date_Of_Birth)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Gender)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Amount)
+                </td>
+
+                <p>
+                    @Html.ActionLink("Edit", "EditDetails", new { id = item.Application_ID }) |
+                    @Html.ActionLink("Back to List", "Index")
+                </p>
+            </tr>
+        }
+    </table>*@

@@ -1,0 +1,12 @@
+@model IEnumerable<HomeLoan1.Models.Upload_Document>
+@{
+        Layout = "~/Views/Shared/_Layout-Admin.cshtml";
+}
+@foreach (var i in Model)
+{
+    string name = i.Aadhar_Card.ToString();
+    string filename = name.Remove(0, 1);
+
+
+<center><br /><label>Aadhar Card</label><br /><hr /><br /><img src="@filename" height="400" width="250" alt="Aadhar Card" /><br />@Html.ActionLink("Go to Previous Page", "ViewVDocuments",new { id = i.Application_ID })</center>
+}

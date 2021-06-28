@@ -1,0 +1,79 @@
+﻿@model IEnumerable<HomeLoan1.Models.Upload_Document>
+
+@{
+    ViewBag.Title = "ViewDocuments";
+    Layout = "~/Views/Shared/_Layout-Admin.cshtml";
+
+}
+
+<center><h2>View Documents</h2></center>
+<hr />
+
+<center>
+    <table border="1" style="width:20%; font-weight:bolder;">
+        @foreach (var x in Model)
+        {
+
+            <tr>
+                <td>
+                    Aadhar Card
+                </td>
+                <td>
+                    @Html.ActionLink("View", "ViewAadhar", new { id = x.Application_ID })
+
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    PAN Card
+                </td>
+                <td>
+                    @Html.ActionLink("View", "ViewPan", new { id = x.Application_ID })
+
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    NOC
+                </td>
+                <td>
+                    @Html.ActionLink("View", "ViewNoa", new { id = x.Application_ID })
+
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    LOA
+                </td>
+                <td>
+                    @Html.ActionLink("View", "ViewLoc", new { id = x.Application_ID })
+
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    Salary Slip
+                </td>
+                <td>
+                    @Html.ActionLink("View", "ViewSalarySlip", new { id = x.Application_ID })
+
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    Agreement
+                </td>
+                <td>
+                    @Html.ActionLink("View", "ViewAgreement", new { id = x.Application_ID })
+
+                </td>
+            </tr>
+            @Html.ActionLink("Go to Previous Page", "ViewDetails",new { id = x.Application_ID })
+        }
+    </table>
+</center>
+
+<hr />
+@*@Html.Partial("ViewAadhar", new { id = x.Application_ID })*@

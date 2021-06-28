@@ -1,0 +1,38 @@
+﻿
+
+.container-fluid {
+    position: relative;
+    text-align: center;
+}
+
+#emiamount {
+    color: #0037ff;
+}
+#tenuredisp {
+    color: #0037ff;
+    font-size: large;
+}
+#loanamountdisp {
+    color: #0037ff;
+    font-size: large;
+}
+#emiamount {
+    color: #0037ff;
+    font-size: x-large;
+}
+#eligibleamount {
+    color: #0037ff;
+    font-size: x-large;
+}
+
+.tagline{
+    font-size:x-large;
+}
+.emi-button {
+    text-align: center;
+    background-color: #5269a3;
+  
+}
+.button-group{
+    text-align:center;
+}

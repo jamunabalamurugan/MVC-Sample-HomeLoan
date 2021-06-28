@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Home_Loan_TestModelStoreContainer" CdmEntityContainer="Home_Loan_TestEntities">
+    <EntitySetMapping Name="Admins">
+      <EntityTypeMapping TypeName="Home_Loan_TestModel.Admin">
+        <MappingFragment StoreEntitySet="Admin">
+          <ScalarProperty Name="Admin_ID" ColumnName="Admin_ID" />
+          <ScalarProperty Name="Admin_Password" ColumnName="Admin_Password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Incomes">
+      <EntityTypeMapping TypeName="Home_Loan_TestModel.Income">
+        <MappingFragment StoreEntitySet="Income">
+          <ScalarProperty Name="Income_ID" ColumnName="Income_ID" />
+          <ScalarProperty Name="Type_Of_Employment" ColumnName="Type_Of_Employment" />
+          <ScalarProperty Name="Organization_Type" ColumnName="Organization_Type" />
+          <ScalarProperty Name="Organization_Name" ColumnName="Organization_Name" />
+          <ScalarProperty Name="Salary" ColumnName="Salary" />
+          <ScalarProperty Name="Retirement_Age" ColumnName="Retirement_Age" />
+          <ScalarProperty Name="Application_ID" ColumnName="Application_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Properties">
+      <EntityTypeMapping TypeName="Home_Loan_TestModel.Property">
+        <MappingFragment StoreEntitySet="Property">
+          <ScalarProperty Name="Property_ID" ColumnName="Property_ID" />
+          <ScalarProperty Name="Plot_Number" ColumnName="Plot_Number" />
+          <ScalarProperty Name="Property_Area" ColumnName="Property_Area" />
+          <ScalarProperty Name="Pincode" ColumnName="Pincode" />
+          <ScalarProperty Name="Type_Of_Property" ColumnName="Type_Of_Property" />
+          <ScalarProperty Name="Estimated_Cost" ColumnName="Estimated_Cost" />
+          <ScalarProperty Name="Application_ID" ColumnName="Application_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Status">
+      <EntityTypeMapping TypeName="Home_Loan_TestModel.Status">
+        <MappingFragment StoreEntitySet="Status">
+          <ScalarProperty Name="Status_ID" ColumnName="Status_ID" />
+          <ScalarProperty Name="Loan_Status" ColumnName="Loan_Status" />
+          <ScalarProperty Name="Verification_Status" ColumnName="Verification_Status" />
+          <ScalarProperty Name="Application_ID" ColumnName="Application_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Upload_Document">
+      <EntityTypeMapping TypeName="Home_Loan_TestModel.Upload_Document">
+        <MappingFragment StoreEntitySet="Upload_Document">
+          <ScalarProperty Name="Document_ID" ColumnName="Document_ID" />
+          <ScalarProperty Name="Pan_Card" ColumnName="Pan_Card" />
+          <ScalarProperty Name="Aadhar_Card" ColumnName="Aadhar_Card" />
+          <ScalarProperty Name="Salary_Slip" ColumnName="Salary_Slip" />
+          <ScalarProperty Name="LOA" ColumnName="LOA" />
+          <ScalarProperty Name="NOC" ColumnName="NOC" />
+          <ScalarProperty Name="Agreement" ColumnName="Agreement" />
+          <ScalarProperty Name="Application_ID" ColumnName="Application_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="User_Detail">
+      <EntityTypeMapping TypeName="Home_Loan_TestModel.User_Detail">
+        <MappingFragment StoreEntitySet="User_Detail">
+          <ScalarProperty Name="Application_ID" ColumnName="Application_ID" />
+          <ScalarProperty Name="User_Password" ColumnName="User_Password" />
+          <ScalarProperty Name="First_Name" ColumnName="First_Name" />
+          <ScalarProperty Name="Middle_Name" ColumnName="Middle_Name" />
+          <ScalarProperty Name="Last_Name" ColumnName="Last_Name" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Phone_Number" ColumnName="Phone_Number" />
+          <ScalarProperty Name="Date_Of_Birth" ColumnName="Date_Of_Birth" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Aadhar_Number" ColumnName="Aadhar_Number" />
+          <ScalarProperty Name="Pan_Number" ColumnName="Pan_Number" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LoanDetails">
+      <EntityTypeMapping TypeName="Home_Loan_TestModel.LoanDetail">
+        <MappingFragment StoreEntitySet="LoanDetail">
+          <ScalarProperty Name="Application_ID" ColumnName="Application_ID" />
+          <ScalarProperty Name="Balance" ColumnName="Balance" />
+          <ScalarProperty Name="Loan_Account_Number" ColumnName="Loan_Account_Number" />
+          <ScalarProperty Name="Tenure" ColumnName="Tenure" />
+          <ScalarProperty Name="Interest" ColumnName="Interest" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="Loan_ID" ColumnName="Loan_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,18 @@
+﻿
+@{
+    ViewBag.Title = "Approve";
+    Layout = "~/Views/Shared/_Layout-Admin.cshtml";
+}
+<hr />
+<div class="container">
+    <p style="font-size:large;">
+        Application bearing ID: <strong>@ViewBag.AppID</strong> with Loan Amount: <strong>@ViewBag.Amount</strong> Approved<br />
+
+        <br />
+        EMI: @ViewBag.emi
+        <br />
+        Generated Loan Account Number: <strong>@ViewBag.AccountNumber</strong>
+    </p>
+    <hr />
+    @Html.ActionLink("Go to Home","AdminHome")
+</div>

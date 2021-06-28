@@ -1,0 +1,36 @@
+﻿@model HomeLoan1.Models.Admin
+
+@{
+    ViewBag.Title = "AdminLogin";
+
+    Layout = "~/Views/Shared/_Layout-Admin.cshtml";
+}
+        @*
+        {
+            
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            
+           
+
+
+
+
+            <button class="btn btn-primary " style="margin:auto;" type="submit">Login</button>
+        }*@
+
+<div class="login-clean" style="height:550px;">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        
+        <div class="illustration"><i class="icon ion-ios-navigate"></i></div>
+        <div class="form-group">@Html.TextBoxFor(model => model.Admin_ID, new { @class = "form-control ", @placeholder = "Admin ID" })</div>
+        <div class="form-group"> @Html.PasswordFor(model => model.Admin_Password, new { @class = "form-control ", @placeholder = "Password" })</div>
+        <div class="form-group"><button class="btn btn-primary btn-block" type="submit">Log In</button></div>
+    }
+</div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+

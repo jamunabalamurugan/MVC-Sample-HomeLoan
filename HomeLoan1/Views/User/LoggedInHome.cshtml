@@ -1,0 +1,59 @@
+﻿@model HomeLoan1.Models.StatusView
+
+@{
+    ViewBag.Title = "LoggedInHome";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2> </h2>
+
+@using (Html.BeginForm("ViewStatus","User")) 
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+   
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @TempData["message"]
+
+
+
+    @Html.HiddenFor(m => m.Application_ID)
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "" } })
+            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Date_Of_Birth, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+
+            @Html.EditorFor(model => model.Date_Of_Birth, new { htmlAttributes = new { @class = "date-picker"  } })
+            @Html.ValidationMessageFor(model => model.Date_Of_Birth, "", new { @class = "text-danger" })
+
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Phone_Number, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Phone_Number, new { htmlAttributes = new { @class = "" } })
+            @Html.ValidationMessageFor(model => model.Phone_Number, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+
+
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Check" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+

@@ -1,0 +1,84 @@
+﻿@model HomeLoan1.Models.StatusView
+
+@{
+    ViewBag.Title = "ViewStatus";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>ViewStatus</h2>
+
+<div>
+    <h4>LoanDetail</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Application_ID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Application_ID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.First_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.First_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Last_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Last_Name)
+        </dd>
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Loan_Account_Number)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Loan_Account_Number)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Balance)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Balance)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Tenure)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tenure)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Interest)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Interest)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Verification_Status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Verification_Status)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Loan_Status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Loan_Status)
+        </dd>
+    </dl>
+</div>
+

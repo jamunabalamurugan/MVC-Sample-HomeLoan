@@ -1,0 +1,22 @@
+create database Home_Loan
+use Home_Loan
+
+create table Admin(Admin_ID int primary key,Admin_Password varchar(30))
+
+create table User_Details(Application_ID int primary key,User_Password varchar(30),First_Name varchar(30),Middle_Name varchar(30), Last_Name varchar(30),Email varchar(50),Phone_Number varchar(12),Date_Of_Birth Date, Gender varchar(30),Nationality varchar(30),Aadhar_Number int,Pan_Number varchar(30),Bank_Account_Number int)
+
+create table Property(Property_ID int primary key, Property_Number int, Property_Area varchar(30), Pincode int,Type_Of_Property varchar(30),Estimated_Cost float,Application_ID int foreign key references User_Details(Application_ID))
+
+create table Income(Income_ID int primary key,Type_Of_Employment varchar(30), Organization_Type varchar(30),Organization_Name varchar(30), Salary float,Retirement_Age int,Application_ID int foreign key references User_Details(Application_ID))
+
+create table Loan_Details(Loan_ID int primary key, Amount float,Interest float,Tenure float,Application_ID int foreign key references User_Details(Application_ID))
+
+create table Uploaded_Documents(Document_ID int primary key,Pan_Card varchar(70),Aadhar_Card varchar(70),Salary_Slip varchar(70),Loa varchar(70),Noc varchar(70),Agreement varchar(70),Application_ID int foreign key references User_Details(Application_ID))
+
+create table Status(Status_ID int primary key,Track_Status varchar(30),Application_ID int foreign key references User_Details(Application_ID))
+
+alter table User_Details drop column Bank_Account_Number
+
+alter table Loan_Details add Loan_Account_Number varchar(30) unique
+
+alter table Loan_Details add Balance float

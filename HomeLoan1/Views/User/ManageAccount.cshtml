@@ -1,0 +1,45 @@
+﻿@model HomeLoan1.Models.User_Detail
+
+@{
+    ViewBag.Title = "ManageAccount";
+    Layout = "~/Views/Shared/_Layout-Admin.cshtml";
+}
+
+<h2 style="text-align:center">Manage Your Account</h2>
+
+<div>
+   
+    <hr />
+    <dl class="dl-horizontal ">
+       
+        
+        <dt>
+            @Html.DisplayName("Name:")
+        </dt>
+
+        <dd>
+            @Model.First_Name @Model.Middle_Name @Model.Last_Name
+        </dd>
+
+       
+
+        <dt>
+            @Html.DisplayName("Email ID:")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Mobile Number:")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Phone_Number)
+        </dd>
+        <dd>
+            @Html.ActionLink("Change Password", "ModifyPassword", "User", new { id = Model.Application_ID},new { @class = "btn btn-default" })
+        </dd>
+    </dl>
+</div>

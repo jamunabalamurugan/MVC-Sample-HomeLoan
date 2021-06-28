@@ -1,0 +1,41 @@
+﻿           
+            @if (Session["Application_ID"] != null)
+            {
+                using (Html.BeginForm("SignOut", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+                {
+                    @Html.AntiForgeryToken()
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            @Html.ActionLink("Hi " + Session["FName"] + "!", "ManageAccount", "User", routeValues: null, htmlAttributes: new { title = "Manage Account" })
+                        </li>
+                        <li>
+                            @Html.ActionLink("Sign Out", "SignOut", "User", routeValues: null, htmlAttributes: new { title = "Sign Out" })
+                        </li>
+                    </ul>
+                }
+            }
+            else if (Session["Admin"] !=null)
+            {
+                using (Html.BeginForm("SignOut", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+                {
+                    @Html.AntiForgeryToken()
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            @Html.ActionLink("Admin", "AdminHome", "Admin", routeValues: null, htmlAttributes: new { title = "Admin Home" })
+                        </li>
+                        <li>
+                             @Html.ActionLink("Sign Out", "AdminSignout", "Admin", routeValues: null, htmlAttributes: new { title = "Sign Out" })
+                            </li>
+                    </ul>
+                }
+            }
+            else
+            {
+                <ul class="nav navbar-nav navbar-right">
+                    <li style="color:white;">@Html.ActionLink("Admin Login","AdminLogin","Admin")</li>
+                    <li style="color:white;">@Html.ActionLink("Log in", "UserLogin", "User", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+                </ul>
+            }
+

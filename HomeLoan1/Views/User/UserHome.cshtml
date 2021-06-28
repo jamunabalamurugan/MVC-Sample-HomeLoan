@@ -1,0 +1,264 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+<script type="text/javascript">
+    document.body.style.backgroundImage = "url('../Images/homeimage1.jpeg') ";
+    document.body.style.backgroundRepeat = "no-repeat";
+    document.body.style.backgroundSize = "100%";
+    document.body.style.backgroundOrigin = 
+    
+    function switchVisible() {
+        if (document.getElementById('Div1')) {
+
+            if (document.getElementById('Div1').style.display == 'none') {
+                document.getElementById('Div1').style.display = 'normal';
+                document.getElementById('Div2').style.display = 'none';
+            }
+            else {
+                document.getElementById('Div1').style.display = 'none';
+                document.getElementById('Div2').style.display = 'normal';
+            }
+        }
+    }
+
+    var rate = 8.5 / 1200;
+
+    function updateamount(val) {
+        document.getElementById('loanamountdisp').innerHTML = "₹ " + val;
+        emi();
+    }
+    function updatetenure(val) {
+        document.getElementById('tenuredisp').innerHTML = val + " Years";
+        emi();
+    }
+    function emi() {
+        var tenure = document.getElementById('tenure').value;
+        tenure = tenure * 12;
+
+        var amount = document.getElementById('loanamount').value;
+
+        var emiamount = (amount * rate * Math.pow((1 + rate), tenure)) / (Math.pow((1 + rate), tenure) - 1);
+
+        document.getElementById('emiamount').innerHTML = " ₹ " + emiamount.toFixed(0);
+    }
+    function emi1() {
+        document.getElementById('emi').style.display = "block";
+        document.getElementById('eligibility').style.display = "none";
+    }
+    function eligibility() {
+        document.getElementById('emi').style.display = "none";
+        document.getElementById('eligibility').style.display = "block";
+    }
+    function checkeligibility() {
+        var salary = document.getElementById('salary').value;
+        var eligibleamount = 60 * (0.6 * salary);
+        document.getElementById('eligibleamount').innerHTML = "₹ " + eligibleamount;
+    }
+</script>
+<div class="container-fluid">
+    <br />
+    <div class="row">
+        <div class="col-md-1 col-lg-1">
+
+        </div>
+        <div class="tagline col-md-3 col-lg-3 col-sm-12 col-xs-12 ">
+            <strong>Make</strong> a house <strong>Your home</strong>
+        </div>
+        <div class="col-md-8 col-lg-8">
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2 col-lg-2">
+
+        </div>
+        <div class="tagline col-md-4 col-lg-4 col-sm-12 col-xs-12">
+            with our Home Loan Solutions
+        </div>
+        <div class="col-md-6 col-lg-6">
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8 col-lg-8">
+
+        </div>
+        <div class="col-md-3 col-lg-3">
+            <button class="btn emi-button" onclick="emi1()">
+                EMI Calculator
+            </button>
+            <button class="btn emi-button" onclick="eligibility()">
+                Eligibility Calculator
+            </button>
+        </div>
+        <div class="col-md-1 col-lg-1">
+
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-md-8 col-lg-8">
+
+        </div>
+        <div id="emi" class="col-md-3 col-lg-3" style="display:block; margin:0 auto;height:300px;">
+            <strong>Loan Amount: </strong> <label id="loanamountdisp">₹ 100000</label><br />
+
+            <input id="loanamount" class="slider" type="range" min="100000" max="10000000" value="100000" onchange="updateamount(this.value)" />
+            <br />
+            <br /><br />
+            <strong>Tenure: </strong> <label id="tenuredisp">2 Years</label><br />
+
+            <input id="tenure" class="slider" type="range" min="2" max="30" value="2" onchange="updatetenure(this.value)" /><br />
+            <br /><br />
+            <strong>Your EMI</strong> <br />
+            <label style="font-weight:bolder;font-size:x-large;"<strong>&#8595;&#8595;</strong></label><br /><label id="emiamount">₹ 4546</label><br />
+
+
+
+
+        </div>
+        <div id="eligibility" class="col-md-3 col-lg-3" style="display:none; margin:0 auto;height:300px;">
+            <br /><br /><label>Please Enter your Monthly Salary</label><br />
+            <input type="text" id="salary" onkeydown="checkeligibility()" />
+            <br /><br />
+            <label>Your Eligible Loan Amount</label>
+            <br />
+            <label style="font-size:x-large"><strong>&#8595;&#8595;</strong></label><br />
+            <label id="eligibleamount" style="font-size:x-large">₹ 0</label>
+        </div>
+
+        <div class="col-md-1 col-lg-1">
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4 col-lg-4">
+        </div>
+        <div class="col-md-1 col-lg-1">
+            <strong style="background-color:white; color: black; border-radius:5px;">@TempData["UploadStatus"]</strong>
+            <button style="background-color:#AD1A0A; color:wheat; font-weight:bolder;" class="btn" type="button" onclick="location.href='@Url.Action("UserDetails", "User")'">Apply Now</button>
+        </div>
+        <div class="col-md-7 col-lg-7">
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
+@*<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="1500">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner">
+        <div class="item active">
+            <img src="~/Images/3.png" alt="Los Angeles" style=" width:100%; height:5%;">
+        </div>
+
+
+        <div class="item">
+            <img src="~/Images/money11.jpg" alt="New york" style="width:100%; height:5%;">
+        </div>
+
+
+        <div class="item">
+            <img src="~/Images/2.jpg" alt="New york" style="width:100%; height:5%;">
+        </div>
+    </div>
+
+    <!-- Left and right controls -->
+    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>*@
+
+@*<h3>Documents required to apply:</h3>
+<ol>
+    <li>PAN Card</li>
+    <li>Aadhar Card</li>
+    <li>Salary Slip</li>
+    <li>LOA</li>
+    <li>NOC</li>
+    <li>Agreement</li>
+
+</ol>*@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@*<div class="row">
+    <div class="col-md-12">
+        @*<img src="~/Images/homeimage1.jpeg" style="width:100%;" alt="HomeLoan" />*@
+@*<div style="z-index:1000;" class="centered "><strong>Make</strong> a house <strong>Your home</strong> <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;with our Home Loan Solutions</div>
+            <button class="btn btn-danger bottom1">Apply Now</button>
+
+        </div>
+    </div>
+    @*<div class="row">
+                <div class="col-md-3 col-lg-3">
+
+                </div>
+                <div class="col-md-6 col-lg-6 col-sm-12">
+
+                </div>
+                <div class="col-md-3 col-lg-3"></div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-3 col-lg-3">
+
+                </div>
+                <div class="col-md-6 col-lg-6 col-sm-12">
+
+                </div>
+                <div class="col-md-3 col-lg-3"></div>
+            </div>
+
+        </div>*@
+
+
+
+@*<div class="imgtag">Make a house your home with our Home Loan Solutions</div>
+    @*<div class="row image1">
+
+        <div class="col-md-7 col-lg-7 col-sm-12">*@
+
+
+
+@*</div>*@
+
+@*<div class="col-md-1 col-lg-1">
+
+    </div>
+    <div class="col-md-4 col-lg-4 col-sm-12">
+        Calculator
+    </div>*@
+@*</div>*@
+
+

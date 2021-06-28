@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewBag.Title = "AdminHome";
+    Layout = "~/Views/Shared/_Layout-Admin.cshtml";
+}
+<center><h2>Admin Home</h2></center>
+<hr />
+<div class="container">
+    <div class="row" style="text-align:center;">
+        <div class="col-md-6 col-md-push-1">
+            @Html.ActionLink("View Not Verified Applications", "NotVerified", "Admin",new { @class = "btn btn-default" })
+        </div>
+        <div class="col-md-6 col-md-pull-1">
+            @Html.ActionLink("View Verified Applications", "Verified", "Admin", new { @class = "btn btn-default" })
+        </div>
+    </div>
+</div>
+
+
+
+

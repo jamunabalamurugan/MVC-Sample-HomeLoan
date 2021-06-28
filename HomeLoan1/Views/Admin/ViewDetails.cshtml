@@ -1,0 +1,37 @@
+﻿@model IEnumerable<HomeLoan1.Models.AllUsers>
+
+@{
+    ViewBag.Title = "ViewDetails";
+    Layout = "~/Views/Shared/_Layout-Admin.cshtml";
+    WebGrid webGrid = new WebGrid(source: Model,rowsPerPage:10);
+}
+
+<center><h2>View Details</h2></center>
+@webGrid.GetHtml(
+       htmlAttributes: new { @id = "WebGrid", @class = "Grid webgrid-table" },
+
+       columns: webGrid.Columns(
+                webGrid.Column("First_Name", "First Name"),
+               webGrid.Column("Middle_Name", "Middle Name"),
+               webGrid.Column("Last_Name", "Last Name"),
+             webGrid.Column("Phone_Number", "Phone Number"),
+              webGrid.Column("Date_Of_Birth", "Date Of Birth", format: (item) => string.Format("{0:dd-MMM-yyyy}", item.Date_Of_Birth)),
+              webGrid.Column("Gender", "Gender"),
+             webGrid.Column("Aadhar_Number", "Aadhar Number"),
+              webGrid.Column("Pan_Number", "PAN Number"),
+              webGrid.Column("Type_Of_Employment", "Type of Employment"),
+               webGrid.Column("Organization_Type", "Organization Type"),
+               webGrid.Column("Organization_Name", "Organization Name"),
+             webGrid.Column("Salary", "Salary"),
+            webGrid.Column("Retirement_Age", "Retirement Age"),
+          webGrid.Column("Plot_Number", "Plot Number"),
+              webGrid.Column("Property_Area", "Plot Area"),
+              webGrid.Column("Pincode", "ZIP Code"),
+               webGrid.Column("Type_Of_Property", "Type of Property"),
+            webGrid.Column("Estimated_Cost", "Estimated Cost"),
+                 webGrid.Column(format: (item) => Html.ActionLink("View Uploaded Documents", "ViewDocuments", new { id = item.Application_ID }), style: "column-action"),
+       webGrid.Column(format: (item) => Html.ActionLink("Approve", "Approve", new { id = item.Application_ID }), style: "column-action"),
+       webGrid.Column(format: (item) => Html.ActionLink("Reject", "Reject", new { id = item.Application_ID }), style: "column-action")))
+          
+
+    @Html.ActionLink("Go to Previous Page", "NotVerified")

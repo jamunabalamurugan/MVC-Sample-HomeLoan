@@ -1,0 +1,73 @@
+﻿@model HomeLoan1.Models.Income
+
+@{
+    ViewBag.Title = "incomedetails";
+}
+
+<h2><center>Income Details</center></h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4></h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Type_Of_Employment, htmlAttributes: new { @class = "control-label col-md-6" })
+            <div class="col-md-6">
+                @Html.RadioButtonFor(g => g.Type_Of_Employment, "Salaried")@Html.Label("Salaried") &nbsp;&nbsp;&nbsp;
+                @Html.RadioButtonFor(g => g.Type_Of_Employment, "Self-employed")@Html.Label("Self-employed")&nbsp;&nbsp;&nbsp;
+                @*@Html.RadioFor(model => model.Type_Of_Employment, new { htmlAttributes = new { @class = "form-control" } })*@
+                @Html.ValidationMessageFor(model => model.Type_Of_Employment, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Organization_Type, htmlAttributes: new { @class = "control-label col-md-6" })
+            <div class="col-md-6">
+                @Html.RadioButtonFor(g => g.Organization_Type, "Government")@Html.Label("Government") &nbsp;&nbsp;&nbsp;
+                @Html.RadioButtonFor(g => g.Organization_Type, "Private")@Html.Label("Private")&nbsp;&nbsp;&nbsp;
+                @*@Html.EditorFor(model => model.Organization_Type, new { htmlAttributes = new { @class = "form-control" }*@
+                @Html.ValidationMessageFor(model => model.Organization_Type, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Organization_Name, htmlAttributes: new { @class = "control-label col-md-6" })
+            <div class="col-md-6">
+                @Html.EditorFor(model => model.Organization_Name, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Organization_Name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Salary, htmlAttributes: new { @class = "control-label col-md-6" })
+            <div class="col-md-6">
+                @Html.EditorFor(model => model.Salary, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Salary, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Retirement_Age, htmlAttributes: new { @class = "control-label col-md-6" })
+            <div class="col-md-6">
+                @Html.EditorFor(model => model.Retirement_Age, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Retirement_Age, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-6 col-md-12">
+                <input type="submit" value="Submit" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

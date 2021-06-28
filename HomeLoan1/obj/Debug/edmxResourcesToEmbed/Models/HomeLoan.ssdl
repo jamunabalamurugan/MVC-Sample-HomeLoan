@@ -1,0 +1,173 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Home_Loan_TestModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Admin">
+    <Key>
+      <PropertyRef Name="Admin_ID" />
+    </Key>
+    <Property Name="Admin_ID" Type="int" Nullable="false" />
+    <Property Name="Admin_Password" Type="varchar" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="Income">
+    <Key>
+      <PropertyRef Name="Income_ID" />
+    </Key>
+    <Property Name="Income_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Type_Of_Employment" Type="varchar" MaxLength="30" />
+    <Property Name="Organization_Type" Type="varchar" MaxLength="30" />
+    <Property Name="Organization_Name" Type="varchar" MaxLength="30" />
+    <Property Name="Salary" Type="float" />
+    <Property Name="Retirement_Age" Type="int" />
+    <Property Name="Application_ID" Type="int" />
+  </EntityType>
+  <EntityType Name="LoanDetail">
+    <Key>
+      <PropertyRef Name="Loan_ID" />
+    </Key>
+    <Property Name="Loan_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Amount" Type="float" />
+    <Property Name="Interest" Type="float" />
+    <Property Name="Tenure" Type="float" />
+    <Property Name="Loan_Account_Number" Type="varchar" MaxLength="50" />
+    <Property Name="Balance" Type="float" />
+    <Property Name="Application_ID" Type="int" />
+  </EntityType>
+  <EntityType Name="Property">
+    <Key>
+      <PropertyRef Name="Property_ID" />
+    </Key>
+    <Property Name="Property_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Plot_Number" Type="varchar" MaxLength="20" />
+    <Property Name="Property_Area" Type="varchar" MaxLength="30" />
+    <Property Name="Pincode" Type="varchar" MaxLength="10" />
+    <Property Name="Type_Of_Property" Type="varchar" MaxLength="30" />
+    <Property Name="Estimated_Cost" Type="float" />
+    <Property Name="Application_ID" Type="int" />
+  </EntityType>
+  <EntityType Name="Status">
+    <Key>
+      <PropertyRef Name="Status_ID" />
+    </Key>
+    <Property Name="Status_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Loan_Status" Type="varchar" MaxLength="30" />
+    <Property Name="Verification_Status" Type="varchar" MaxLength="30" />
+    <Property Name="Application_ID" Type="int" />
+  </EntityType>
+  <EntityType Name="Upload_Document">
+    <Key>
+      <PropertyRef Name="Document_ID" />
+    </Key>
+    <Property Name="Document_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Pan_Card" Type="nvarchar(max)" />
+    <Property Name="Aadhar_Card" Type="nvarchar(max)" />
+    <Property Name="Salary_Slip" Type="nvarchar(max)" />
+    <Property Name="LOA" Type="nvarchar(max)" />
+    <Property Name="NOC" Type="nvarchar(max)" />
+    <Property Name="Agreement" Type="nvarchar(max)" />
+    <Property Name="Application_ID" Type="int" />
+  </EntityType>
+  <EntityType Name="User_Detail">
+    <Key>
+      <PropertyRef Name="Application_ID" />
+    </Key>
+    <Property Name="Application_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="User_Password" Type="varchar" MaxLength="30" />
+    <Property Name="First_Name" Type="varchar" MaxLength="30" />
+    <Property Name="Middle_Name" Type="varchar" MaxLength="30" />
+    <Property Name="Last_Name" Type="varchar" MaxLength="30" />
+    <Property Name="Email" Type="varchar" MaxLength="50" />
+    <Property Name="Phone_Number" Type="varchar" MaxLength="14" />
+    <Property Name="Date_Of_Birth" Type="date" />
+    <Property Name="Gender" Type="varchar" MaxLength="10" />
+    <Property Name="Aadhar_Number" Type="varchar" MaxLength="15" />
+    <Property Name="Pan_Number" Type="varchar" MaxLength="15" />
+  </EntityType>
+  <Association Name="FK__Income__Applicat__173876EA">
+    <End Role="User_Detail" Type="Self.User_Detail" Multiplicity="0..1" />
+    <End Role="Income" Type="Self.Income" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User_Detail">
+        <PropertyRef Name="Application_ID" />
+      </Principal>
+      <Dependent Role="Income">
+        <PropertyRef Name="Application_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__LoanDetai__Appli__2E1BDC42">
+    <End Role="User_Detail" Type="Self.User_Detail" Multiplicity="0..1" />
+    <End Role="LoanDetail" Type="Self.LoanDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User_Detail">
+        <PropertyRef Name="Application_ID" />
+      </Principal>
+      <Dependent Role="LoanDetail">
+        <PropertyRef Name="Application_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Property__Applic__145C0A3F">
+    <End Role="User_Detail" Type="Self.User_Detail" Multiplicity="0..1" />
+    <End Role="Property" Type="Self.Property" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User_Detail">
+        <PropertyRef Name="Application_ID" />
+      </Principal>
+      <Dependent Role="Property">
+        <PropertyRef Name="Application_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Status__Applicat__20C1E124">
+    <End Role="User_Detail" Type="Self.User_Detail" Multiplicity="0..1" />
+    <End Role="Status" Type="Self.Status" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User_Detail">
+        <PropertyRef Name="Application_ID" />
+      </Principal>
+      <Dependent Role="Status">
+        <PropertyRef Name="Application_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Upload_Do__Appli__1DE57479">
+    <End Role="User_Detail" Type="Self.User_Detail" Multiplicity="0..1" />
+    <End Role="Upload_Document" Type="Self.Upload_Document" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User_Detail">
+        <PropertyRef Name="Application_ID" />
+      </Principal>
+      <Dependent Role="Upload_Document">
+        <PropertyRef Name="Application_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Home_Loan_TestModelStoreContainer">
+    <EntitySet Name="Admin" EntityType="Self.Admin" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Income" EntityType="Self.Income" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LoanDetail" EntityType="Self.LoanDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Property" EntityType="Self.Property" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Status" EntityType="Self.Status" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Upload_Document" EntityType="Self.Upload_Document" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User_Detail" EntityType="Self.User_Detail" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Income__Applicat__173876EA" Association="Self.FK__Income__Applicat__173876EA">
+      <End Role="User_Detail" EntitySet="User_Detail" />
+      <End Role="Income" EntitySet="Income" />
+    </AssociationSet>
+    <AssociationSet Name="FK__LoanDetai__Appli__2E1BDC42" Association="Self.FK__LoanDetai__Appli__2E1BDC42">
+      <End Role="User_Detail" EntitySet="User_Detail" />
+      <End Role="LoanDetail" EntitySet="LoanDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Property__Applic__145C0A3F" Association="Self.FK__Property__Applic__145C0A3F">
+      <End Role="User_Detail" EntitySet="User_Detail" />
+      <End Role="Property" EntitySet="Property" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Status__Applicat__20C1E124" Association="Self.FK__Status__Applicat__20C1E124">
+      <End Role="User_Detail" EntitySet="User_Detail" />
+      <End Role="Status" EntitySet="Status" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Upload_Do__Appli__1DE57479" Association="Self.FK__Upload_Do__Appli__1DE57479">
+      <End Role="User_Detail" EntitySet="User_Detail" />
+      <End Role="Upload_Document" EntitySet="Upload_Document" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,239 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+
+
+
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/Content/Home.css" />
+    <style>
+        * {
+            margin: 0px;
+        }
+
+        .slider {
+            -webkit-appearance: none; /* Override default CSS styles */
+            width: 100%; /* Full-width */
+            height: 12px;
+            border-radius: 5px; /* Specified height */
+            background: #d3d3d3; /* Grey background */
+            outline: none; /* Remove outline */
+            opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+            -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+            transition: opacity .2s;
+        }
+
+            /* Mouse-over effects */
+            .slider:hover {
+                opacity: 1; /* Fully shown on mouse-over */
+            }
+
+            /* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+            .slider::-webkit-slider-thumb {
+                -webkit-appearance: none; /* Override default look */
+                width: 20px; /* Set a specific slider handle width */
+                height: 20px;
+                border-radius: 50%; /* Slider handle height */
+                background: red; /* Green background */
+                cursor: pointer; /* Cursor on hover */
+            }
+
+        a.my-class {
+            color: white;
+        }
+
+            a.my-class:active {
+                color: white;
+            }
+
+            a.my-class:link {
+                color: white;
+            }
+
+            a.my-class:visited {
+                color: white;
+            }
+
+        .emi-button {
+            color: white;
+            font-weight: bolder;
+        }
+
+        #salary {
+            background-color: lightgrey;
+            border-radius: 5px;
+        }
+
+        .btn-custom {
+            background-color: #0037ff;
+        }
+
+
+
+
+        body {
+            font-family: Arial;
+            font-size: 10pt;
+        }
+
+        .Grid {
+            border: 1px solid #ccc;
+            border-color: blueviolet;
+            border-style: solid
+        }
+
+            .Grid th {
+                background-color: lightblue;
+                font-weight: bold;
+            }
+
+            .Grid th, .Grid td {
+                padding: 5px;
+                border: 1px solid #ccc;
+            }
+
+            .Grid, .Grid table td {
+                border: 0px solid #ccc;
+                background-color:blueviolet;
+            }
+
+                .Grid th a, .Grid th a:visited {
+                    color: #333;
+                }
+
+        .webgrid-table {
+            font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+            font-size: 1.0em;
+            width: 1300px;
+            height: 450px;
+            margin-left: 30px;
+            /*display: table; */
+            display: inline-block;
+            border-collapse: separate;
+            border: solid 1px #778899;
+            background-color: white;
+            overflow-y: scroll;
+            overflow-x: scroll;
+        }
+        .webgrid-table1 {
+            font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+            font-size: 1.0em;
+            width: 800px;
+            margin:auto;
+            height: 450px;
+            margin-left: 250px;
+            /*display: table; */
+            display: inline-block;
+            border-collapse: separate;
+            border: solid 1px #778899;
+            background-color: white;
+            overflow-y: scroll;
+            overflow-x: scroll;
+        }
+
+        .thead {
+            position: fixed;
+            margin-top: -30px;
+        }
+
+
+
+        .contenedor-login {
+            background-color: #ccc;
+            width: 20%;
+            margin: auto;
+            margin-top: 16%;
+            border-radius: 4px;
+        }
+
+        .imagen {
+            width: 40%;
+            margin: auto;
+            /*margin-top:50px;*/
+        }
+
+        .form-control.form-input {
+            margin: 15px 0px;
+            width: 80%;
+            margin: auto;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .btn.btn-primary.btn-block {
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+  .my-class1{
+      color:black;
+  }
+    </style>
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link rel="stylesheet" href="~/Content/Login-Form-Clean.css">
+    <link rel="stylesheet" href="~/Content/styles.css">
+    <script>
+        function preventBack() { window.history.forward(); }
+        setTimeout("preventBack()", 0);
+        window.onunload = function () { null };
+    </script>
+
+</head>
+<body>
+    <div class="navbar navbar-fixed-top" style="background-color:lightblue;">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+                @Html.ImageActionLink("AdminHome", "AdminHome", "Admin", null, null, "~/Images/go.png")
+                @Html.ActionLink("Homeberg", "UserHome", "User", new { area = "" }, new { @class = "navbar-brand my-class1" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+
+                    @*<li>@Html.ActionLink("About Us", "About", "Home",new { @class = "my-class" },null)</li>
+                        <li>@Html.ActionLink("FAQ", "Contact", "Home",new{ @class = "my-class" },null)</li>*@
+                </ul>
+                @*<ul class="nav navbar-nav navbar-right">
+                        <li>@Html.ActionLink("User Login", "UserLogin", "User",new { @class = "my-class" },null)</li>
+                        <li>@Html.ActionLink("Admin Login", "AdminLogin", "Admin", new { @class = "my-class" },null)</li>
+                    </ul>*@
+                @Html.Partial("_Login")
+            </div>
+        </div>
+    </div>
+
+    @RenderBody()
+
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+
+
+    <br /><br /><br />
+    <footer style="position:fixed;margin-bottom:0px; bottom:0;width:100%;font-size:12px; padding: 15px; background-color:	lightblue;">
+        
+       
+
+
+
+        <center> <p>&copy; @DateTime.Now.Year - Homeberg All rights reserved</p></center>
+
+    </footer>
+
+
+
+
+
+</body>
+</html>

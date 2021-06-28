@@ -1,0 +1,70 @@
+﻿@model HomeLoan1.Models.Upload_Document
+
+@{
+    ViewBag.Title = "Adddoc";
+}
+
+<center><h2>Add Documents</h2></center>
+
+<p></p>
+
+
+@using (Html.BeginForm("UploadDocuments", "User", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+       
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Pan_Card, htmlAttributes: new { @class = "control-label col-md-6" })
+            <input type="file" name="PanFile" required  />
+         
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Aadhar_Card, htmlAttributes: new { @class = "control-label col-md-6" })
+            <input type="file" name="AadharFile" required  />
+          
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Salary_Slip, htmlAttributes: new { @class = "control-label col-md-6" })
+            <input type="file" name="SalaryFile" required />
+           
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.LOA, htmlAttributes: new { @class = "control-label col-md-6" })
+            <input type="file" name="LOAFile" required />
+          
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.NOC, htmlAttributes: new { @class = "control-label col-md-6" })
+            <input type="file" name="NOCFile" required />
+         
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Agreement, htmlAttributes: new { @class = "control-label col-md-6" })
+            <input type="file" name="AgreementFile" required />
+        
+        </div>
+
+
+
+        <div class="form-group">
+            <div class="col-md-offset-6 col-md-10">
+                <input type="submit" value="Submit" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+
+}
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
